@@ -1,7 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
+import ErrorBoundary from './error/ErrorBoundary';
 
-const app = <App />;
+const container = document.getElementById('app');
+const root = createRoot(container as Element);
 
-ReactDOM.render(app, document.getElementById('app'));
+const app = (
+  <ErrorBoundary>
+    <App />
+  </ErrorBoundary>
+);
+root.render(app);

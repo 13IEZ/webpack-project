@@ -6,9 +6,6 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 module.exports = {
   entry: ['./src/index.tsx'],
   devServer: {
-    static: {
-      watch: true,
-    },
     port: 3000,
     compress: true,
     open: true,
@@ -26,7 +23,6 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
-      filename: 'index.html',
     }),
     new ESLintPlugin(),
   ],
@@ -42,12 +38,15 @@ module.exports = {
         exclude: /node_modules|\.d\.ts$/,
         use: {
           loader: 'ts-loader',
-          options: {
-            compilerOptions: {
-              noEmit: false,
-            },
-          },
         },
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
     ],
   },

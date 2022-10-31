@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { CssBaseline } from '@mui/material';
+import { Global } from '@emotion/react';
+import { GlobalStyles } from './style/style';
+import Main from './pages/Main/Main';
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
   return (
-    <div>
-      <button onClick={() => setCount(prev => prev + 1)}>+</button>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(prev => prev - 1)}>-</button>
-    </div>
+    <>
+      <CssBaseline />
+      <Global styles={GlobalStyles} />
+      <Main />
+    </>
   );
 };
 
